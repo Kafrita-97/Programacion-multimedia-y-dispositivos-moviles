@@ -16,8 +16,9 @@
     <string name="text_sum_button">+</string>
     <string name="text_rest_button">-</string>
     <string name="text_mult_button">x</string>
-    <string name="text_posneg_button">+/-</string>
+    <string name="text_bracket_button">( )</string>
     <string name="text_percent_button">%</string>
     <string name="text_div_button">/</string>
     <string name="text_clear_button">AC</string>
+    <string name="default_inputText">0</string>
 </resources>
