@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     String operation;
     boolean checkBracket = false;
     boolean checkDot = false;
-    boolean checkNewOperation = false;
+    boolean checkIsNewOperation = false;
     boolean checkSum = false;
     boolean checkRest = false;
     boolean checkMult = false;
@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //resetea todos los valores
-    private void resetValues () {
+    private void resetParams() {
         operation = "";
         inputText.setText("");
         outputText.setText("");
         checkBracket = false;
         checkDot = false;
-        checkNewOperation = false;
+        checkIsNewOperation = false;
         checkSum = false;
         checkRest = false;
         checkMult = false;
@@ -70,19 +70,19 @@ public class MainActivity extends AppCompatActivity {
         checkPercent  = false;
     }
 
-    //evalua si se ha mostrado un resultado en el estado anterior para resetear todos los valores
-    private  void checkNewOperation () {
-        if (checkNewOperation) {
-            resetValues();
-        }
-    }
-
     //actualiza los valores en pantalla al pulsar un boton
     @SuppressLint("SetTextI18n")
-    private void refresh (String value) {
-        checkNewOperation();
+    private void refreshInOut(String value) {
+        if (checkIsNewOperation) {
+            resetParams();
+        }
         operation = inputText.getText().toString();
         inputText.setText(inputText.getText() + value);
+        checkSum = false;
+        checkRest = false;
+        checkMult = false;
+        checkDiv = false;
+        checkPercent  = false;
     }
 
     //esto es para que no se pinten dos simbolos iguales seguidos
@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     operation = inputText.getText().toString();
                     inputText.setText(inputText.getText() + "+");
                     checkSum = true;
+                    checkDot = false;
                 } else {
                     operation = inputText.getText().toString();
                     inputText.setText(inputText.getText() + "");
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     operation = inputText.getText().toString();
                     inputText.setText(inputText.getText() + "-");
                     checkRest = true;
+                    checkDot = false;
                 } else {
                     operation = inputText.getText().toString();
                     inputText.setText(inputText.getText() + "");
@@ -125,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                     operation = inputText.getText().toString();
                     inputText.setText(inputText.getText() + "x");
                     checkMult = true;
+                    checkDot = false;
                 } else {
                     operation = inputText.getText().toString();
                     inputText.setText(inputText.getText() + "");
@@ -135,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     operation = inputText.getText().toString();
                     inputText.setText(inputText.getText() + "/");
                     checkDiv = true;
+                    checkDot = false;
                 } else {
                     operation = inputText.getText().toString();
                     inputText.setText(inputText.getText() + "");
@@ -145,56 +149,13 @@ public class MainActivity extends AppCompatActivity {
                     operation = inputText.getText().toString();
                     inputText.setText(inputText.getText() + "%");
                     checkPercent = true;
+                    checkDot = true;
                 } else {
                     operation = inputText.getText().toString();
                     inputText.setText(inputText.getText() + "");
                 }
                 break;
         }
-    }
-
-    public void button0 (View vista) {
-        refresh("0");
-    }
-
-    public void button1 (View vista) {
-        refresh("1");
-    }
-
-    public void button2 (View vista) {
-        refresh("2");
-    }
-
-    public void button3 (View vista) {
-        refresh("3");
-    }
-
-    public void button4 (View vista) {
-        refresh("4");
-    }
-
-    public void button5 (View vista) {
-        refresh("5");
-    }
-
-    public void button6 (View vista) {
-        refresh("6");
-    }
-
-    public void button7 (View vista) {
-        refresh("7");
-    }
-
-    public void button8 (View vista) {
-        refresh("8");
-    }
-
-    public void button9 (View vista) {
-        refresh("9");
-    }
-
-    public void buttonClear (View vista) {
-        resetValues();
     }
 
     //habria que echarle un ojo porque no va fino
@@ -217,24 +178,40 @@ public class MainActivity extends AppCompatActivity {
         checkDot = true;
     }
 
-    public void buttonDiv (View vista) {
-        evalueSimbolsConstraints('/');
-        checkDot = false;
+    public void buttonDot (View vista) {
+        evalueSimbolsConstraints('.');
     }
 
-    public void buttonMult (View vista) {
-        evalueSimbolsConstraints('x');
-        checkDot = false;
+    public void buttonClear (View vista) {
+        resetParams();
     }
 
-    public void buttonRest (View vista) {
-        evalueSimbolsConstraints('-');
-        checkDot = false;
-    }
-
-    public void buttonSum (View vista) {
-        evalueSimbolsConstraints('+');
-        checkDot = false;
+    public void buttonDel (View vista) {
+        if (inputText.length()!= 0) {
+            switch (inputText.getText().toString().charAt(inputText.length()-1)) {
+                case '.':
+                    checkDot = false;
+                    break;
+                case '+':
+                    checkSum = false;
+                    break;
+                case '-':
+                    checkRest = false;
+                    break;
+                case 'x':
+                    checkMult = false;
+                    break;
+                case '/':
+                    checkDiv = false;
+                    break;
+                case '%':
+                    checkPercent  = false;
+                    break;
+            }
+            inputText.setText(inputText.getText().toString().substring(0, inputText.length()-1));
+        } else {
+            inputText.setText("");
+        }
     }
 
     public void buttonResult (View vista) {
@@ -245,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
 
         Context rhino = Context.enter();
         rhino.setOptimizationLevel(-1);
-        String finalResult = "";
+        String finalResult;
 
         try {
             Scriptable scriptable = rhino.initStandardObjects();
@@ -254,37 +231,64 @@ public class MainActivity extends AppCompatActivity {
             finalResult = "Error";
         }
 
-        checkNewOperation = true;
+        checkIsNewOperation = true;
         outputText.setText(finalResult);
     }
 
-    public void buttonDel (View vista) {
-        operation = inputText.getText().toString();
-
-        if (inputText.length()!= 0) {
-
-            switch (inputText.getText().toString().charAt(inputText.length()-1)) {
-                case '.':
-                    checkDot = false;
-                case '+':
-                    checkSum = false;
-                case '-':
-                    checkRest = false;
-                case 'x':
-                    checkMult = false;
-                case '/':
-                    checkDiv = false;
-                case '%':
-                    checkPercent  = false;
-            }
-            inputText.setText(inputText.getText().toString().substring(0, inputText.length()-1));
-        } else {
-            inputText.setText("");
-        }
+    public void buttonDiv (View vista) {
+        evalueSimbolsConstraints('/');
     }
 
-    public void buttonDot (View vista) {
-        evalueSimbolsConstraints('.');
+    public void buttonMult (View vista) {
+        evalueSimbolsConstraints('x');
+    }
+
+    public void buttonRest (View vista) {
+        evalueSimbolsConstraints('-');
+    }
+
+    public void buttonSum (View vista) {
+        evalueSimbolsConstraints('+');
+    }
+
+    public void button0 (View vista) {
+        refreshInOut("0");
+    }
+
+    public void button1 (View vista) {
+        refreshInOut("1");
+    }
+
+    public void button2 (View vista) {
+        refreshInOut("2");
+    }
+
+    public void button3 (View vista) {
+        refreshInOut("3");
+    }
+
+    public void button4 (View vista) {
+        refreshInOut("4");
+    }
+
+    public void button5 (View vista) {
+        refreshInOut("5");
+    }
+
+    public void button6 (View vista) {
+        refreshInOut("6");
+    }
+
+    public void button7 (View vista) {
+        refreshInOut("7");
+    }
+
+    public void button8 (View vista) {
+        refreshInOut("8");
+    }
+
+    public void button9 (View vista) {
+        refreshInOut("9");
     }
 
 }
