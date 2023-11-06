@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
@@ -55,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //resetea todos los valores
     private void resetParams() {
         operation = "";
         inputText.setText("");
@@ -70,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         checkPercent  = false;
     }
 
-    //actualiza los valores en pantalla al pulsar un boton
     @SuppressLint("SetTextI18n")
     private void refreshInOut(String value) {
         if (checkIsNewOperation) {
@@ -86,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //esto es para que no se pinten dos simbolos iguales seguidos
-    //habria que mirar que no se puedan poner dos operadores seguidos
+    //habria que mirar que no se puedan poner dos operadores diferentes seguidos
     @SuppressLint("SetTextI18n")
-    private void evalueSimbolsConstraints (char simbol) {
+    private void evalueSimbolsConstraints(char simbol) {
         switch (simbol){
             case '.':
                 if (!checkDot) {
@@ -103,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             case '+':
                 if (!checkSum) {
                     operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + "+");
+                    inputText.setText(inputText.getText() + " + ");
                     checkSum = true;
                     checkDot = false;
                 } else {
@@ -114,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             case '-':
                 if (!checkRest) {
                     operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + "-");
+                    inputText.setText(inputText.getText() + " - ");
                     checkRest = true;
                     checkDot = false;
                 } else {
@@ -125,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             case 'x':
                 if (!checkMult) {
                     operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + "x");
+                    inputText.setText(inputText.getText() + " x ");
                     checkMult = true;
                     checkDot = false;
                 } else {
@@ -136,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             case '/':
                 if (!checkDiv) {
                     operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + "/");
+                    inputText.setText(inputText.getText() + " / ");
                     checkDiv = true;
                     checkDot = false;
                 } else {
@@ -160,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
     //habria que echarle un ojo porque no va fino
     @SuppressLint("SetTextI18n")
-    public void buttonBracket (View vista) {
+    public void buttonBracket(View vista) {
         if (checkBracket) {
             operation = inputText.getText().toString();
             inputText.setText(inputText.getText() + ")");
@@ -173,48 +169,56 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void buttonPercent (View vista) {
+    public void buttonPercent(View vista) {
         evalueSimbolsConstraints('%');
         checkDot = true;
     }
 
-    public void buttonDot (View vista) {
+    public void buttonDot(View vista) {
         evalueSimbolsConstraints('.');
     }
 
-    public void buttonClear (View vista) {
+    public void buttonClear(View vista) {
         resetParams();
     }
 
-    public void buttonDel (View vista) {
+    public void buttonDel(View vista) {
         if (inputText.length()!= 0) {
-            switch (inputText.getText().toString().charAt(inputText.length()-1)) {
-                case '.':
-                    checkDot = false;
-                    break;
-                case '+':
-                    checkSum = false;
-                    break;
-                case '-':
-                    checkRest = false;
-                    break;
-                case 'x':
-                    checkMult = false;
-                    break;
-                case '/':
-                    checkDiv = false;
-                    break;
-                case '%':
-                    checkPercent  = false;
-                    break;
+            if (inputText.getText().toString().charAt(inputText.length()-1) == ' '){
+                inputText.setText(inputText.getText().toString().substring(0, inputText.length()-1));
+                switch (inputText.getText().toString().charAt(inputText.length()-1)) {
+                    case '.':
+                        checkDot = false;
+                        break;
+                    case '+':
+                        checkSum = false;
+                        break;
+                    case '-':
+                        checkRest = false;
+                        break;
+                    case 'x':
+                        checkMult = false;
+                        break;
+                    case '/':
+                        checkDiv = false;
+                        break;
+                    case '%':
+                        checkPercent  = false;
+                        break;
+                }
+                inputText.setText(inputText.getText().toString().substring(0, inputText.length()-1));
+                inputText.setText(inputText.getText().toString().substring(0, inputText.length()-1));
+            } else {
+                inputText.setText(inputText.getText().toString().substring(0, inputText.length()-1));
             }
-            inputText.setText(inputText.getText().toString().substring(0, inputText.length()-1));
+            String[] prueba = inputText.getText().toString().split(" ");
+            checkDot = prueba[prueba.length-1].contains(".");
         } else {
             inputText.setText("");
         }
     }
 
-    public void buttonResult (View vista) {
+    public void buttonResult(View vista) {
         operation = inputText.getText().toString();
 
         operation = operation.replace("x", "*");
@@ -235,59 +239,59 @@ public class MainActivity extends AppCompatActivity {
         outputText.setText(finalResult);
     }
 
-    public void buttonDiv (View vista) {
+    public void buttonDiv(View vista) {
         evalueSimbolsConstraints('/');
     }
 
-    public void buttonMult (View vista) {
+    public void buttonMult(View vista) {
         evalueSimbolsConstraints('x');
     }
 
-    public void buttonRest (View vista) {
+    public void buttonRest(View vista) {
         evalueSimbolsConstraints('-');
     }
 
-    public void buttonSum (View vista) {
+    public void buttonSum(View vista) {
         evalueSimbolsConstraints('+');
     }
 
-    public void button0 (View vista) {
+    public void button0(View vista) {
         refreshInOut("0");
     }
 
-    public void button1 (View vista) {
+    public void button1(View vista) {
         refreshInOut("1");
     }
 
-    public void button2 (View vista) {
+    public void button2(View vista) {
         refreshInOut("2");
     }
 
-    public void button3 (View vista) {
+    public void button3(View vista) {
         refreshInOut("3");
     }
 
-    public void button4 (View vista) {
+    public void button4(View vista) {
         refreshInOut("4");
     }
 
-    public void button5 (View vista) {
+    public void button5(View vista) {
         refreshInOut("5");
     }
 
-    public void button6 (View vista) {
+    public void button6(View vista) {
         refreshInOut("6");
     }
 
-    public void button7 (View vista) {
+    public void button7(View vista) {
         refreshInOut("7");
     }
 
-    public void button8 (View vista) {
+    public void button8(View vista) {
         refreshInOut("8");
     }
 
-    public void button9 (View vista) {
+    public void button9(View vista) {
         refreshInOut("9");
     }
 
