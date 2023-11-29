@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="5dp"
-        android:onClick="buttonDel"
+        android:onClick="buttonDelete"
         android:text="@string/text_del_button"
         app:layout_constraintEnd_toStartOf="@+id/resul_button"
         app:layout_constraintStart_toEndOf="@+id/dot_button"
@@ -240,7 +240,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
-        android:onClick="buttonClear"
+        android:onClick="buttonClearAll"
         android:text="@string/text_clear_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/bracket_button"
         app:layout_constraintEnd_toStartOf="@+id/bracket_button"
@@ -258,5 +258,25 @@
         app:layout_constraintEnd_toEndOf="@+id/percent_button"
         app:layout_constraintStart_toEndOf="@+id/percent_button"
         app:layout_constraintTop_toBottomOf="@+id/input_text" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="Guardar"
+        app:layout_constraintBottom_toTopOf="@+id/clear_button"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="Historial"
+        app:layout_constraintBottom_toTopOf="@+id/div_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
