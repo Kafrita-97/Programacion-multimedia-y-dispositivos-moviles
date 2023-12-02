@@ -9,10 +9,11 @@
 
     <Button
         android:id="@+id/del_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="24dp"
         android:onClick="buttonDelete"
         android:text="@string/text_del_button"
         app:layout_constraintEnd_toStartOf="@+id/resul_button"
@@ -21,21 +22,23 @@
 
     <Button
         android:id="@+id/value0_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="24dp"
         android:onClick="button0"
         android:text="@string/text_value0_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/dot_button"
         app:layout_constraintEnd_toStartOf="@+id/dot_button"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/dot_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
         android:onClick="buttonDot"
         android:text="@string/text_dot_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/del_button"
@@ -44,8 +47,11 @@
 
     <Button
         android:id="@+id/resul_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
         android:onClick="buttonResult"
         android:text="@string/text_resul_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/del_button"
@@ -54,9 +60,10 @@
 
     <Button
         android:id="@+id/value2_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
         android:onClick="button2"
         android:text="@string/text_value2_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/value3_button"
@@ -65,20 +72,22 @@
 
     <Button
         android:id="@+id/value4_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="24dp"
         android:onClick="button4"
         android:text="@string/text_value4_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/value5_button"
         app:layout_constraintEnd_toStartOf="@+id/value5_button"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/sum_button"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
         android:onClick="buttonSum"
         android:text="@string/text_sum_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/value3_button"
@@ -87,10 +96,11 @@
 
     <Button
         android:id="@+id/value3_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="24dp"
         android:onClick="button3"
         android:text="@string/text_value3_button"
         app:layout_constraintEnd_toStartOf="@+id/sum_button"
@@ -99,21 +109,23 @@
 
     <Button
         android:id="@+id/value1_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="24dp"
         android:onClick="button1"
         android:text="@string/text_value1_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/value2_button"
         app:layout_constraintEnd_toStartOf="@+id/value2_button"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/value5_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
         android:onClick="button5"
         android:text="@string/text_value5_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/value6_button"
@@ -122,10 +134,11 @@
 
     <Button
         android:id="@+id/value6_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="24dp"
         android:onClick="button6"
         android:text="@string/text_value6_button"
         app:layout_constraintEnd_toStartOf="@+id/rest_button"
@@ -134,8 +147,9 @@
 
     <Button
         android:id="@+id/rest_button"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
         android:onClick="buttonRest"
         android:text="@string/text_rest_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/value6_button"
@@ -144,21 +158,23 @@
 
     <Button
         android:id="@+id/value7_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="24dp"
         android:onClick="button7"
         android:text="@string/text_value7_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/value8_button"
         app:layout_constraintEnd_toStartOf="@+id/value8_button"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/value8_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
         android:onClick="button8"
         android:text="@string/text_value8_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/value9_button"
@@ -167,10 +183,11 @@
 
     <Button
         android:id="@+id/value9_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="24dp"
         android:onClick="button9"
         android:text="@string/text_value9_button"
         app:layout_constraintEnd_toStartOf="@+id/mult_button"
@@ -179,34 +196,56 @@
 
     <Button
         android:id="@+id/mult_button"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
         android:onClick="buttonMult"
         android:text="@string/text_mult_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/value9_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/value9_button" />
 
-    <TextView
-        android:id="@+id/input_text"
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="22dp"
-        android:gravity="end"
-        android:hint="0"
-        android:textColorHint="#8D6E63"
+        android:layout_height="251dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/input_text"
+            style="@style/Widget.Material3.CardView.Elevated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="end"
+            android:hint="0"
+            android:textSize="60sp"
+            tools:ignore="HardcodedText"/>
+
+        <TextView
+            android:id="@+id/output_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:gravity="end"
+            android:textSize="50sp"/>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <Button
         android:id="@+id/bracket_button"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
         android:onClick="buttonBracket"
         android:text="@string/text_bracket_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/percent_button"
@@ -215,10 +254,9 @@
 
     <Button
         android:id="@+id/percent_button"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="400dp"
         android:onClick="buttonPercent"
         android:text="@string/text_percent_button"
         app:layout_constraintEnd_toStartOf="@+id/div_button"
@@ -227,8 +265,9 @@
 
     <Button
         android:id="@+id/div_button"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
         android:onClick="buttonDiv"
         android:text="@string/text_div_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/percent_button"
@@ -237,44 +276,40 @@
 
     <Button
         android:id="@+id/clear_button"
-        android:layout_width="wrap_content"
+
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="24dp"
+        android:autoSizeTextType="none"
         android:onClick="buttonClearAll"
         android:text="@string/text_clear_button"
+        android:textAlignment="center"
         app:layout_constraintBaseline_toBaselineOf="@+id/bracket_button"
         app:layout_constraintEnd_toStartOf="@+id/bracket_button"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/output_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="22dp"
-        android:gravity="end"
-        app:layout_constraintEnd_toEndOf="@+id/percent_button"
-        app:layout_constraintStart_toEndOf="@+id/percent_button"
-        app:layout_constraintTop_toBottomOf="@+id/input_text" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        style="@style/Widget.Material3.Button.TextButton.Icon"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:text="Guardar"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/guardar"
         app:layout_constraintBottom_toTopOf="@+id/clear_button"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        style="@style/Widget.Material3.Button.TextButton.Icon"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:text="Historial"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/historial"
         app:layout_constraintBottom_toTopOf="@+id/div_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button" />

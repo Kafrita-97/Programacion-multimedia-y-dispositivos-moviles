@@ -5,23 +5,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
+//Dividir el codigo en varias clases, por ejemplo en utiles y manejobotones
 public class MainActivity extends AppCompatActivity {
 
     TextView inputText, outputText;
-    Button button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, buttonClearAll, buttonBracket, buttonPercent, buttonDiv, buttonMult, buttonRest, buttonSum, buttonResult, buttonDelete, buttonDot;
+    Button button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, buttonClearAll, buttonBracket, buttonPercent, buttonDivision, buttonMultiplication, buttonSubstraction, buttonAdition, buttonResult, buttonDelete, buttonDot;
     String operation;
-    boolean checkBracket = false;
-    boolean checkDot = false;
-    boolean checkIsNewOperation = false;
-    boolean checkSum = false;
-    boolean checkRest = false;
-    boolean checkMult = false;
-    boolean checkDiv = false;
-    boolean checkPercent  = false;
+    boolean bracketFlag = false;
+    boolean dotFlag = false;
+    boolean isNewOperationFlag = false;
+    boolean aditionFlag = false;
+    boolean substractionFlag = false;
+    boolean multiplicationFlag = false;
+    boolean divisionFlag = false;
+    boolean percentFlag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,28 +37,28 @@ public class MainActivity extends AppCompatActivity {
 
     //Done
     private void initializeViews() {
-        inputText = (TextView) findViewById(R.id.input_text);
-        outputText = (TextView) findViewById(R.id.output_text);
-        button0 = (Button) findViewById(R.id.value0_button);
-        button1 = (Button) findViewById(R.id.value1_button);
-        button2 = (Button) findViewById(R.id.value2_button);
-        button3 = (Button) findViewById(R.id.value3_button);
-        button4 = (Button) findViewById(R.id.value4_button);
-        button5 = (Button) findViewById(R.id.value5_button);
-        button6 = (Button) findViewById(R.id.value6_button);
-        button7 = (Button) findViewById(R.id.value7_button);
-        button8 = (Button) findViewById(R.id.value8_button);
-        button9 = (Button) findViewById(R.id.value9_button);
-        buttonClearAll = (Button) findViewById(R.id.clear_button);
-        buttonBracket = (Button) findViewById(R.id.bracket_button);
-        buttonPercent = (Button) findViewById(R.id.percent_button);
-        buttonDiv = (Button) findViewById(R.id.div_button);
-        buttonMult = (Button) findViewById(R.id.mult_button);
-        buttonRest = (Button) findViewById(R.id.rest_button);
-        buttonSum = (Button) findViewById(R.id.sum_button);
-        buttonResult = (Button) findViewById(R.id.resul_button);
-        buttonDelete = (Button) findViewById(R.id.del_button);
-        buttonDot = (Button) findViewById(R.id.dot_button);
+        inputText = findViewById(R.id.input_text);
+        outputText = findViewById(R.id.output_text);
+        button0 = findViewById(R.id.value0_button);
+        button1 = findViewById(R.id.value1_button);
+        button2 = findViewById(R.id.value2_button);
+        button3 = findViewById(R.id.value3_button);
+        button4 = findViewById(R.id.value4_button);
+        button5 = findViewById(R.id.value5_button);
+        button6 = findViewById(R.id.value6_button);
+        button7 = findViewById(R.id.value7_button);
+        button8 = findViewById(R.id.value8_button);
+        button9 = findViewById(R.id.value9_button);
+        buttonClearAll = findViewById(R.id.clear_button);
+        buttonBracket = findViewById(R.id.bracket_button);
+        buttonPercent = findViewById(R.id.percent_button);
+        buttonDivision = findViewById(R.id.div_button);
+        buttonMultiplication = findViewById(R.id.mult_button);
+        buttonSubstraction = findViewById(R.id.rest_button);
+        buttonAdition = findViewById(R.id.sum_button);
+        buttonResult = findViewById(R.id.resul_button);
+        buttonDelete = findViewById(R.id.del_button);
+        buttonDot = findViewById(R.id.dot_button);
     }
 
     //FUNCIONES GENERALES
@@ -70,18 +73,18 @@ public class MainActivity extends AppCompatActivity {
 
     //Done
     private void resetParamsIfItsNewOperation() {
-        if (checkIsNewOperation) {
+        if (isNewOperationFlag) {
             resetAllParams();
         }
     }
 
     //Done
     private void resetOperatorFlags() {
-        checkSum = false;
-        checkRest = false;
-        checkMult = false;
-        checkDiv = false;
-        checkPercent  = false;
+        aditionFlag = false;
+        substractionFlag = false;
+        multiplicationFlag = false;
+        divisionFlag = false;
+        percentFlag = false;
     }
 
     //Done
@@ -89,85 +92,75 @@ public class MainActivity extends AppCompatActivity {
         operation = "";
         inputText.setText("");
         outputText.setText("");
-        checkBracket = false;
-        checkDot = false;
-        checkIsNewOperation = false;
-        checkSum = false;
-        checkRest = false;
-        checkMult = false;
-        checkDiv = false;
-        checkPercent  = false;
+        bracketFlag = false;
+        dotFlag = false;
+        isNewOperationFlag = false;
+        aditionFlag = false;
+        substractionFlag = false;
+        multiplicationFlag = false;
+        divisionFlag = false;
+        percentFlag = false;
     }
 
-    //esto es para que no se pinten dos simbolos iguales seguidos
-    //habria que mirar que no se puedan poner dos operadores diferentes seguidos
-    //esto hay que mejorarlo, cambiar el switch por un map y una funcion para no repetir codigo o algo
-    @SuppressLint("SetTextI18n")
-    private void evalueSimbolsConstraints(char symbol) {
-        switch (symbol){
+
+    //Done
+    private void setOperatorAndSymbols(char symbol) {
+        setOperator(symbol);
+        setSymbol(symbol);
+    }
+
+    //Done
+    private void setOperator(char symbol) {
+        if (!aditionFlag && !substractionFlag && !multiplicationFlag && !divisionFlag) {
+            switch (symbol) {
+                case '+':
+                    operation = inputText.getText().toString();
+                    inputText.setText(String.format("%s + ", inputText.getText()));
+                    aditionFlag = true;
+                    dotFlag = false;
+                    break;
+
+                case '-':
+                    operation = inputText.getText().toString();
+                    inputText.setText(String.format("%s - ", inputText.getText()));
+                    substractionFlag = true;
+                    dotFlag = false;
+                    break;
+
+                case 'x':
+                    operation = inputText.getText().toString();
+                    inputText.setText(String.format("%s x ", inputText.getText()));
+                    multiplicationFlag = true;
+                    dotFlag = false;
+                    break;
+
+                case '/':
+                    operation = inputText.getText().toString();
+                    inputText.setText(String.format("%s / ", inputText.getText()));
+                    divisionFlag = true;
+                    dotFlag = false;
+                    break;
+            }
+        }
+    }
+
+    //Done
+    private void setSymbol(char symbol) {
+        switch (symbol) {
             case '.':
-                if (!checkDot) {
+                if (!dotFlag) {
                     operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + ".");
-                    checkDot = true;
-                } else {
-                    operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + "");
+                    inputText.setText(String.format("%s.", inputText.getText()));
+                    dotFlag = true;
                 }
                 break;
-            case '+':
-                if (!checkSum) {
-                    operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + " + ");
-                    checkSum = true;
-                    checkDot = false;
-                } else {
-                    operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + "");
-                }
-                break;
-            case '-':
-                if (!checkRest) {
-                    operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + " - ");
-                    checkRest = true;
-                    checkDot = false;
-                } else {
-                    operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + "");
-                }
-                break;
-            case 'x':
-                if (!checkMult) {
-                    operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + " x ");
-                    checkMult = true;
-                    checkDot = false;
-                } else {
-                    operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + "");
-                }
-                break;
-            case '/':
-                if (!checkDiv) {
-                    operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + " / ");
-                    checkDiv = true;
-                    checkDot = false;
-                } else {
-                    operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + "");
-                }
-                break;
+
             case '%':
-                if (!checkPercent) {
+                if (!percentFlag) {
                     operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + "%");
-                    checkPercent = true;
-                    checkDot = true;
-                } else {
-                    operation = inputText.getText().toString();
-                    inputText.setText(inputText.getText() + "");
+                    inputText.setText(String.format("%s%%", inputText.getText()));
+                    percentFlag = true;
+                    dotFlag = true;
                 }
                 break;
         }
@@ -180,49 +173,67 @@ public class MainActivity extends AppCompatActivity {
         resetAllParams();
     }
 
-    //Revisar y mejorar esta logica
+    //Revisar y mejorar esta logica menudo puto caos mimare
     public void buttonDelete(View vista) {
-        if (inputText.length()!= 0) {
+        if (inputText.length() != 0) {
+
             String inputTextString = inputText.getText().toString();
-            if (inputTextString.charAt(inputText.length() - 1) == ' ') {
-                inputText.setText(inputTextString.substring(0, inputText.length() - 1));
-                switch (inputTextString.charAt(inputText.length() - 1)) {
-                    case '+':
-                        checkSum = false;
-                        break;
-                    case '-':
-                        checkRest = false;
-                        break;
-                    case 'x':
-                        checkMult = false;
-                        break;
-                    case '/':
-                        checkDiv = false;
-                        break;
-                }
-                inputText.setText(inputTextString.substring(0, inputText.length() - 1));
-                inputText.setText(inputTextString.substring(0, inputText.length() - 1));
-            } else if (inputTextString.charAt(inputText.length() - 1) == '%') {
-                checkPercent = false;
+            char inputLastChar = inputTextString.charAt(inputText.length() - 1);
+
+            if (inputLastChar == ' ') {
+                resetCheckOperatorOnDelete(inputTextString);
+            } else if (inputLastChar == '%') {
+                resetCheckPercentOnDelete(inputTextString);
             } else {
-                inputText.setText(inputTextString.substring(0, inputText.length()-1));
+                inputText.setText(inputTextString.substring(0, inputText.length() - 1));
             }
-            //Separa cada num del string y evalua si el ultimo tiene un punto y establece el checkdot en base a eso
-            String[] prueba = inputText.getText().toString().split(" ");
-            checkDot = prueba[prueba.length-1].contains(".") || prueba[prueba.length-1].contains("%");
+            //Separa cada num del string y evalua si el ultimo tiene un punto o un % y establece el checkdot en base a eso
+            evalueDotOnDelete();
         } else {
             inputText.setText("");
         }
     }
 
     //Done
+    private void resetCheckOperatorOnDelete(String inputTextString) {
+        char lastChar = inputTextString.charAt(inputText.length() - 2);
+
+        switch (lastChar) {
+            case '+':
+                aditionFlag = false;
+                break;
+            case '-':
+                substractionFlag = false;
+                break;
+            case 'x':
+                multiplicationFlag = false;
+                break;
+            case '/':
+                divisionFlag = false;
+                break;
+        }
+        inputText.setText(inputTextString.substring(0, inputText.length() - 3));
+    }
+
+    //Done
+    private void resetCheckPercentOnDelete(String inputTextString) {
+        percentFlag = false;
+        inputText.setText(inputTextString.substring(0, inputText.length() - 1));
+    }
+
+    //Done
+    private void evalueDotOnDelete() {
+        String[] prueba = inputText.getText().toString().split(" ");
+        dotFlag = prueba[prueba.length - 1].contains(".") || prueba[prueba.length - 1].contains("%");
+    }
+
+    //Done
     public void buttonResult(View vista) {
         operation = inputText.getText().toString();
-        operation = operation.replace("x", "*");
-        operation = operation.replace("%", "/100");
+        operation = operation.replace("x", "*").replace("%", "/100");
 
         outputText.setText(doOperationWithRhino(operation));
-        checkIsNewOperation = true;
+        isNewOperationFlag = true;
     }
 
     //Done
@@ -243,43 +254,42 @@ public class MainActivity extends AppCompatActivity {
 
     //BOTONES SÍMBOLOS
     //Done
-    //lógica muy basica para los parentesis
     @SuppressLint("SetTextI18n")
     public void buttonBracket(View vista) {
-        inputText.setText(inputText.getText() + (checkBracket ? ")" : "("));
-        checkBracket = !checkBracket;
+        inputText.setText(inputText.getText() + (bracketFlag ? ")" : "("));
+        bracketFlag = !bracketFlag;
     }
 
     //Done
     public void buttonPercent(View vista) {
-        evalueSimbolsConstraints('%');
+        setOperatorAndSymbols('%');
     }
 
     //Done
     public void buttonDot(View vista) {
-        evalueSimbolsConstraints('.');
+        setOperatorAndSymbols('.');
     }
 
 
     //BOTONES OPERADORES
     // Done
     public void buttonSum(View vista) {
-        evalueSimbolsConstraints('+');
+        setOperatorAndSymbols('+');
     }
 
     //Done
     public void buttonMult(View vista) {
-        evalueSimbolsConstraints('x');
+        setOperatorAndSymbols('x');
     }
 
     //Done
     public void buttonDiv(View vista) {
-        evalueSimbolsConstraints('/');
+        setOperatorAndSymbols('/');
     }
 
     //Done
     public void buttonRest(View vista) {
-        evalueSimbolsConstraints('-');
+        setOperatorAndSymbols('-');
     }
 
 
