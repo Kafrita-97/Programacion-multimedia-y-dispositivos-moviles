@@ -3,52 +3,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <Button
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/delete_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="48dp"
         android:onClick="buttonDelete"
         android:text="@string/text_delete_button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dot_button"
         app:layout_constraintEnd_toStartOf="@+id/result_button"
-        app:layout_constraintStart_toEndOf="@+id/dot_button"
-        app:layout_constraintTop_toBottomOf="@+id/value3_button" />
+        app:layout_constraintStart_toEndOf="@+id/dot_button" />
 
     <Button
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/value0_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         android:onClick="button0"
         android:text="@string/text_value0_button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/dot_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/dot_button"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@+id/value1_button" />
 
     <Button
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/dot_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="24dp"
         android:onClick="buttonDot"
         android:text="@string/text_dot_button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/delete_button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/value0_button"
         app:layout_constraintEnd_toStartOf="@+id/delete_button"
         app:layout_constraintStart_toEndOf="@+id/value0_button" />
 
     <Button
-        style="@style/Widget.Material3.Button.ElevatedButton"
         android:id="@+id/result_button"
+        style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:onClick="buttonResult"
@@ -58,34 +58,37 @@
         app:layout_constraintStart_toEndOf="@+id/delete_button" />
 
     <Button
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/value2_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="24dp"
         android:onClick="button2"
         android:text="@string/text_value2_button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/value3_button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/value1_button"
         app:layout_constraintEnd_toStartOf="@+id/value3_button"
         app:layout_constraintStart_toEndOf="@+id/value1_button" />
 
     <Button
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/value4_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
         android:onClick="button4"
         android:text="@string/text_value4_button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/value5_button"
+        app:layout_constraintBottom_toTopOf="@+id/value1_button"
         app:layout_constraintEnd_toStartOf="@+id/value5_button"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@+id/value7_button" />
 
     <Button
         android:id="@+id/addition_button"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:onClick="buttonAddition"
@@ -95,58 +98,59 @@
         app:layout_constraintStart_toEndOf="@+id/value3_button" />
 
     <Button
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/value3_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="48dp"
         android:onClick="button3"
         android:text="@string/text_value3_button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/value2_button"
         app:layout_constraintEnd_toStartOf="@+id/addition_button"
-        app:layout_constraintStart_toEndOf="@+id/value2_button"
-        app:layout_constraintTop_toBottomOf="@+id/value6_button" />
+        app:layout_constraintStart_toEndOf="@+id/value2_button" />
 
-    <Button
-        style="@style/Widget.Material3.Button.TonalButton"
+     <Button
         android:id="@+id/value1_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
         android:onClick="button1"
         android:text="@string/text_value1_button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/value2_button"
+        app:layout_constraintBottom_toTopOf="@+id/value0_button"
         app:layout_constraintEnd_toStartOf="@+id/value2_button"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@+id/value4_button" />
 
     <Button
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/value5_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="24dp"
         android:onClick="button5"
         android:text="@string/text_value5_button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/value6_button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/value4_button"
         app:layout_constraintEnd_toStartOf="@+id/value6_button"
         app:layout_constraintStart_toEndOf="@+id/value4_button" />
 
     <Button
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/value6_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="48dp"
         android:onClick="button6"
         android:text="@string/text_value6_button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/value5_button"
         app:layout_constraintEnd_toStartOf="@+id/substraction_button"
-        app:layout_constraintStart_toEndOf="@+id/value5_button"
-        app:layout_constraintTop_toBottomOf="@+id/value9_button" />
+        app:layout_constraintStart_toEndOf="@+id/value5_button" />
 
     <Button
         android:id="@+id/substraction_button"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:onClick="buttonSubstraction"
@@ -156,46 +160,48 @@
         app:layout_constraintStart_toEndOf="@+id/value6_button" />
 
     <Button
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/value7_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
         android:onClick="button7"
         android:text="@string/text_value7_button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/value8_button"
+        app:layout_constraintBottom_toTopOf="@+id/value4_button"
         app:layout_constraintEnd_toStartOf="@+id/value8_button"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@+id/clearAll_button" />
 
     <Button
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/value8_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="24dp"
         android:onClick="button8"
         android:text="@string/text_value8_button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/value9_button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/value7_button"
         app:layout_constraintEnd_toStartOf="@+id/value9_button"
         app:layout_constraintStart_toEndOf="@+id/value7_button" />
 
     <Button
-        style="@style/Widget.Material3.Button.TonalButton"
         android:id="@+id/value9_button"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="48dp"
         android:onClick="button9"
         android:text="@string/text_value9_button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/value8_button"
         app:layout_constraintEnd_toStartOf="@+id/multiplication_button"
-        app:layout_constraintStart_toEndOf="@+id/value8_button"
-        app:layout_constraintTop_toBottomOf="@+id/percent_button" />
+        app:layout_constraintStart_toEndOf="@+id/value8_button" />
 
     <Button
         android:id="@+id/multiplication_button"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:onClick="buttonMultiplication"
@@ -206,16 +212,18 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Filled"
         android:id="@+id/materialCardView"
-        android:layout_width="match_parent"
-        android:layout_height="222dp"
+        style="@style/Widget.Material3.CardView.Filled"
+        android:layout_width="230dp"
+        android:layout_height="207dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="589dp"
+        android:layout_marginBottom="24dp"
         android:checkable="false"
         android:clickable="false"
         android:focusable="false"
+        app:layout_constraintBottom_toTopOf="@+id/register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -223,60 +231,59 @@
         <TextView
             android:id="@+id/input_text"
             android:layout_width="match_parent"
-            android:layout_height="87dp"
+            android:layout_height="79dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:autoSizeMaxTextSize="64sp"
+            android:autoSizeMaxTextSize="58sp"
             android:autoSizeMinTextSize="24sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
             android:gravity="end"
             android:hint="0"
             android:maxLines="2"
-            android:textSize="64sp"
+            android:textSize="58sp"
             tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/output_text"
             android:layout_width="match_parent"
-            android:layout_height="87dp"
+            android:layout_height="79dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="119dp"
-            android:autoSizeMaxTextSize="64sp"
+            android:layout_marginTop="111dp"
+            android:autoSizeMaxTextSize="58sp"
             android:autoSizeMinTextSize="24sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
             android:gravity="end"
             android:maxLines="1"
-            android:textSize="64sp" />
+            android:textSize="58sp" />
     </com.google.android.material.card.MaterialCardView>
 
     <Button
         android:id="@+id/bracket_button"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="24dp"
         android:onClick="buttonBracket"
         android:text="@string/text_bracket_button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/percent_button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/clearAll_button"
         app:layout_constraintEnd_toStartOf="@+id/percent_button"
         app:layout_constraintStart_toEndOf="@+id/clearAll_button" />
 
     <Button
         android:id="@+id/percent_button"
         android:layout_width="72dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="48dp"
         android:onClick="buttonPercent"
         android:text="@string/text_percent_button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/bracket_button"
         app:layout_constraintEnd_toStartOf="@+id/division_button"
-        app:layout_constraintStart_toEndOf="@+id/bracket_button"
-        app:layout_constraintTop_toBottomOf="@+id/register_button" />
+        app:layout_constraintStart_toEndOf="@+id/bracket_button" />
 
     <Button
         android:id="@+id/division_button"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:onClick="buttonDivision"
@@ -288,23 +295,26 @@
     <Button
         android:id="@+id/clearAll_button"
         android:layout_width="72dp"
-        android:layout_height="63dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
         android:autoSizeTextType="none"
         android:onClick="buttonClearAll"
         android:text="@string/text_clear_button"
         android:textAlignment="center"
-        app:layout_constraintBaseline_toBaselineOf="@+id/bracket_button"
+        app:layout_constraintBottom_toTopOf="@+id/value7_button"
         app:layout_constraintEnd_toStartOf="@+id/bracket_button"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
-        style="@style/Widget.Material3.Button.ElevatedButton"
         android:id="@+id/save_button"
-        android:layout_width="169dp"
-        android:layout_height="63dp"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="103dp"
+        android:layout_height="84dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:text="@string/guardar"
@@ -313,46 +323,74 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        style="@style/Widget.Material3.Button.ElevatedButton"
         android:id="@+id/register_button"
-        android:layout_width="169dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="24dp"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="103dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="589dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/historial"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/save_button"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33096084" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.33" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
+        android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.66" />
+        app:layout_constraintGuide_end="24dp"
+        app:layout_constraintGuide_percent="0.93540055" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_percent="0.33"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline9"
+        android:id="@+id/guideline8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">calculadora_android</string>
-    <string name="text_del_button"><![CDATA[<-]]></string>
+    <string name="text_delete_button"><![CDATA[<-]]></string>
     <string name="text_value0_button">0</string>
     <string name="text_dot_button">,</string>
-    <string name="text_resul_button">=</string>
+    <string name="text_result_button">=</string>
     <string name="text_value2_button">2</string>
     <string name="text_value4_button">4</string>
     <string name="text_value3_button">3</string>
@@ -13,9 +13,9 @@
     <string name="text_value7_button">7</string>
     <string name="text_value8_button">8</string>
     <string name="text_value9_button">9</string>
-    <string name="text_sum_button">+</string>
-    <string name="text_rest_button">-</string>
-    <string name="text_mult_button">x</string>
+    <string name="text_addition_button">+</string>
+    <string name="text_substraction_button">-</string>
+    <string name="text_multiplication_button">x</string>
     <string name="text_bracket_button">( )</string>
     <string name="text_percent_button">%</string>
     <string name="text_div_button">/</string>
