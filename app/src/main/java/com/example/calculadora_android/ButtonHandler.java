@@ -90,5 +90,15 @@ public class ButtonHandler {
     }
 
 
+    //BOTONES FUNCIONES
+
+    public  static void  handlerButtonSave () {
+
+    }
+
+    public  static void  handlerButtonHistorical () {
+
+    }
+
 
 }

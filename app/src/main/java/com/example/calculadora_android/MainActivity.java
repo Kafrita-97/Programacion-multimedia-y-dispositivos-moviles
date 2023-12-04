@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,7 +15,13 @@ public class MainActivity extends AppCompatActivity {
     static TextView inputText;
     @SuppressLint("StaticFieldLeak")
     static TextView outputText;
-    Button button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, buttonClearAll, buttonBracket, buttonPercent, buttonDivision, buttonMultiplication, buttonSubstraction, buttonAdition, buttonResult, buttonDelete, buttonDot;
+    Button button0, button1, button2, button3, button4, button5, button6, button7, button8, button9,
+            buttonClearAll, buttonResult, buttonDelete, buttonBracket, buttonPercent, buttonDot,
+            buttonDivision, buttonMultiplication, buttonSubstraction, buttonAdition,
+            buttonSave, buttonHistorical;
+
+
+    static CardView inOutCardView, historicalCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeViews();
+
+        buttonHistorical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CalculatorLogic.changeCardview();
+            }
+        });
+
     }
 
     private void initializeViews() {
@@ -47,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
         buttonResult = findViewById(R.id.result_button);
         buttonDelete = findViewById(R.id.delete_button);
         buttonDot = findViewById(R.id.dot_button);
+        buttonSave = findViewById(R.id.save_button);
+        buttonHistorical = findViewById(R.id.historical_button);
+        inOutCardView = findViewById(R.id.inout_CardView);
+        historicalCardView = findViewById(R.id.historicalCardView);
     }
 
     //BOTONES CONTROL
@@ -86,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonMultiplication(View vista) {
         ButtonHandler.handlerButtonMultiplication();
-
     }
 
     public void buttonDivision(View vista) {

@@ -21,7 +21,7 @@
         style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
         android:layout_height="48dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="304dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
@@ -29,7 +29,7 @@
         android:text="@string/text_value0_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/dot_button"
-        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/value1_button" />
 
     <Button
@@ -74,7 +74,7 @@
         style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
         android:layout_height="48dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="304dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="12dp"
@@ -82,7 +82,7 @@
         android:text="@string/text_value4_button"
         app:layout_constraintBottom_toTopOf="@+id/value1_button"
         app:layout_constraintEnd_toStartOf="@+id/value5_button"
-        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/value7_button" />
 
     <Button
@@ -108,12 +108,12 @@
         app:layout_constraintEnd_toStartOf="@+id/addition_button"
         app:layout_constraintStart_toEndOf="@+id/value2_button" />
 
-     <Button
+    <Button
         android:id="@+id/value1_button"
         style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
         android:layout_height="48dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="304dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="12dp"
@@ -121,7 +121,7 @@
         android:text="@string/text_value1_button"
         app:layout_constraintBottom_toTopOf="@+id/value0_button"
         app:layout_constraintEnd_toStartOf="@+id/value2_button"
-        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/value4_button" />
 
     <Button
@@ -164,7 +164,7 @@
         style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="72dp"
         android:layout_height="48dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="304dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="12dp"
@@ -172,7 +172,7 @@
         android:text="@string/text_value7_button"
         app:layout_constraintBottom_toTopOf="@+id/value4_button"
         app:layout_constraintEnd_toStartOf="@+id/value8_button"
-        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clearAll_button" />
 
     <Button
@@ -212,7 +212,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView"
+        android:id="@+id/inout_CardView"
         style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="230dp"
         android:layout_height="207dp"
@@ -223,7 +223,8 @@
         android:checkable="false"
         android:clickable="false"
         android:focusable="false"
-        app:layout_constraintBottom_toTopOf="@+id/register_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/historical_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -259,11 +260,32 @@
             android:textSize="58sp" />
     </com.google.android.material.card.MaterialCardView>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/historicalCardView"
+        style="@style/Widget.Material3.CardView.Filled"
+        android:layout_width="230dp"
+        android:layout_height="207dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="589dp"
+        android:layout_marginBottom="24dp"
+        android:checkable="false"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/historical_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.material.card.MaterialCardView>
+
     <Button
         android:id="@+id/bracket_button"
         android:layout_width="72dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:onClick="buttonBracket"
         android:text="@string/text_bracket_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/clearAll_button"
@@ -274,6 +296,8 @@
         android:id="@+id/percent_button"
         android:layout_width="72dp"
         android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:onClick="buttonPercent"
         android:text="@string/text_percent_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/bracket_button"
@@ -284,7 +308,7 @@
         android:id="@+id/division_button"
         android:layout_width="72dp"
         android:layout_height="48dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="12dp"
         android:layout_marginEnd="24dp"
         android:onClick="buttonDivision"
         android:text="@string/text_div_button"
@@ -296,9 +320,9 @@
         android:id="@+id/clearAll_button"
         android:layout_width="72dp"
         android:layout_height="48dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="304dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
         android:autoSizeTextType="none"
         android:onClick="buttonClearAll"
@@ -306,7 +330,7 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/value7_button"
         app:layout_constraintEnd_toStartOf="@+id/bracket_button"
-        app:layout_constraintStart_toEndOf="@+id/materialCardView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -318,30 +342,30 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:text="@string/guardar"
-        app:layout_constraintBaseline_toBaselineOf="@+id/register_button"
-        app:layout_constraintEnd_toStartOf="@+id/register_button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/historical_button"
+        app:layout_constraintEnd_toStartOf="@+id/historical_button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/register_button"
+        android:id="@+id/historical_button"
         style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="103dp"
         android:layout_height="84dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="279dp"
         android:layout_marginEnd="589dp"
         android:layout_marginBottom="24dp"
         android:text="@string/historial"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/save_button"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.33096084" />
+        app:layout_constraintGuide_percent="0.33" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

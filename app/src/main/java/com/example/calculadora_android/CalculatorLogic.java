@@ -1,7 +1,10 @@
 package com.example.calculadora_android;
 
 import android.annotation.SuppressLint;
+import android.view.View;
 import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
 
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
@@ -12,6 +15,10 @@ public class CalculatorLogic {
     private static TextView inputText = MainActivity.inputText;
     @SuppressLint("StaticFieldLeak")
     private static TextView outputText = MainActivity.outputText;
+    @SuppressLint("StaticFieldLeak")
+    private static CardView inOutCardView = MainActivity.inOutCardView;
+    @SuppressLint("StaticFieldLeak")
+    private static CardView historicalCardView = MainActivity.historicalCardView;
     private static String operation;
     private static boolean bracketFlag = false;
     private static boolean dotFlag = false;
@@ -218,6 +225,17 @@ public class CalculatorLogic {
         multiplicationFlag = false;
         divisionFlag = false;
         percentFlag = false;
+    }
+
+    //LOGICA FUNCIONES
+    public static void changeCardview () {
+        if (inOutCardView.getVisibility() == View.VISIBLE){
+            inOutCardView.setVisibility(View.GONE);
+            historicalCardView.setVisibility(View.VISIBLE);
+        } else {
+            inOutCardView.setVisibility(View.VISIBLE);
+            historicalCardView.setVisibility(View.GONE);
+        }
     }
 
 }
