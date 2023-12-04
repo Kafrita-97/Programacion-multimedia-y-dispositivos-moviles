@@ -100,10 +100,9 @@ public class CalculatorLogic {
     }
 
     public static void sendOperationToRhno() {
-        operation = inputText.getText().toString();
-        operation = operation.replace("x", "*").replace("%", "/100");
-
+        operation = inputText.getText().toString().replace("x", "*").replace("%", "/100");
         outputText.setText(CalculatorLogic.doOperationWithRhino(operation));
+
         isNewOperationFlag = true;
     }
 
@@ -138,60 +137,64 @@ public class CalculatorLogic {
         if (!additionFlag && !substractionFlag && !multiplicationFlag && !divisionFlag) {
             switch (symbol) {
                 case '+':
-                    operation = inputText.getText().toString();
-                    inputText.setText(String.format("%s + ", inputText.getText()));
+                    setOperatorSymbol('+');
                     additionFlag = true;
-                    dotFlag = false;
                     break;
 
                 case '-':
-                    operation = inputText.getText().toString();
-                    inputText.setText(String.format("%s - ", inputText.getText()));
+                    setOperatorSymbol('-');
                     substractionFlag = true;
-                    dotFlag = false;
                     break;
 
                 case 'x':
-                    operation = inputText.getText().toString();
-                    inputText.setText(String.format("%s x ", inputText.getText()));
+                    setOperatorSymbol('x');
                     multiplicationFlag = true;
-                    dotFlag = false;
                     break;
 
                 case '/':
-                    operation = inputText.getText().toString();
-                    inputText.setText(String.format("%s / ", inputText.getText()));
+                    setOperatorSymbol('/');
                     divisionFlag = true;
-                    dotFlag = false;
                     break;
             }
         }
     }
 
+    private static void setOperatorSymbol (char symbol) {
+        inputText.setText(String.format("%s %s ", inputText.getText(), symbol));
+        dotFlag = false;
+    }
+
     private static void setSymbol(char symbol) {
         switch (symbol) {
             case '(':
-                inputText.setText(String.format("%s%s", inputText.getText(), bracketFlag ? ")" : "("));
-                bracketFlag = !bracketFlag;
+                setBracketSymbol();
                 break;
 
             case '.':
-                if (!dotFlag) {
-                    operation = inputText.getText().toString();
-                    inputText.setText(String.format("%s.", inputText.getText()));
-                    dotFlag = true;
-                }
+                setDotSymbol();
                 break;
 
             case '%':
-                if (!percentFlag) {
-                    operation = inputText.getText().toString();
-                    inputText.setText(String.format("%s%%", inputText.getText()));
-                    percentFlag = true;
-                    dotFlag = true;
-                }
+                setPercentSymbol();
                 break;
         }
+    }
+
+    private static void setBracketSymbol () {
+        inputText.setText(String.format("%s%s", inputText.getText(), bracketFlag ? ")" : "("));
+        bracketFlag = !bracketFlag;
+    }
+
+    private static void setDotSymbol () {
+        operation = inputText.getText().toString();
+        inputText.setText(String.format("%s%s", inputText.getText(), dotFlag ? "" : "."));
+        dotFlag = true;
+    }
+
+    private  static void  setPercentSymbol () {
+        inputText.setText(String.format("%s%s", inputText.getText(), percentFlag ? "" : "%"));
+        percentFlag = true;
+        dotFlag = true;
     }
 
     //LOGICA NUMEROS
